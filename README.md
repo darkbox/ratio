@@ -1,2 +1,2 @@
-# ratio
+# Ratio
 Ratio calculator
