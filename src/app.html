@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <title>Ratio</title>
+    <link rel="stylesheet" type="text/css" href="./styles/reset.css">
+    <link rel="stylesheet" type="text/css" href="./styles/style.css">
+    <link rel="stylesheet" type="text/css" href="./styles/icomoon.css">
+    <link rel="stylesheet" type="text/css" href="./vendors/toastify/toastify.css">
+    <link rel="stylesheet" type="text/css" href="../node_modules/tippy.js/dist/tippy.css">
+</head>
+
+<body class="window-layout">
+    <aside id="side-panel" class="side-panel noselect">
+        <header>
+            <h2 data-tippy-content="Right click on ratio presets to access more options">Common ratios</h2>
+        </header>
+        <section class="main-area">
+            <ul id="ratio-list" class="ratio-list">
+            </ul>
+        </section>
+        <section class="bottom-bar">
+            <button id="add-new-ratio-btn" class="no-borders"><span class="icon-x-circle"
+                    style="display: inline-block;transform: rotate(45deg);"></span> Add new
+                ratio</button>
+        </section>
+    </aside>
+
+    <section class="main-area-layout">
+        <div class="top-bar">
+            <button id="swap-aspect-ratio-btn" class="no-borders" data-tippy-content="Swap ratio"><span
+                    class="icon-swap"></span></button>
+            <button id="x2-btn" class="no-borders" data-tippy-content="Times 2"><span
+                    class="icon-times-2 bigger"></span></button>
+            <button id="x3-btn" class="no-borders" data-tippy-content="Times 3"><span
+                    class="icon-times-3 bigger"></span></button>
+            <button id="d2-btn" class="no-borders" data-tippy-content="Divide by 2"><span
+                    class="icon-divide-by-2 bigger"></span></button>
+            <button id="d3-btn" class="no-borders" data-tippy-content="Divide by 3"><span
+                    class="icon-divide-by-3 bigger"></span></button>
+        </div>
+        <div id="solver-panel">
+            <div class="input-control">
+                <div class="sub-input-control left">
+                    <span class="icon-activity noselect" style="padding:0 16px; visibility: hidden;"></span>
+                    <input id="input-x" type="text" placeholder="X">
+                    <span id="input-x-copy-btn" class="icon-copy noselect copy-button" data-tippy-content="Copy"
+                        style="margin-right:16px"></span>
+                </div>
+                <span class="notation noselect">:</span>
+                <div class="sub-input-control right">
+                    <input id="input-y" type="text" placeholder="Y">
+                    <span id="input-y-copy-btn" class="icon-copy noselect copy-button" data-tippy-content="Copy"
+                        style="margin-right:16px"></span>
+                </div>
+            </div>
+            <div class="h-divider"></div>
+            <div class="input-control">
+                <div class="sub-input-control left">
+                    <span class="icon-activity noselect" style="padding:0 16px;visibility: hidden;"></span>
+                    <input id="input-w" type="text" placeholder="Width">
+                    <span id="input-w-copy-btn" class="icon-copy noselect copy-button" data-tippy-content="Copy"
+                        style="margin-right:16px"></span>
+                </div>
+                <span class="notation noselect">×</span>
+                <div class="sub-input-control right">
+                    <input id="input-h" type="text" placeholder="Height">
+                    <span id="input-h-copy-btn" class="icon-copy noselect copy-button" data-tippy-content="Copy"
+                        style="margin-right:16px"></span>
+                </div>
+            </div>
+        </div>
+        <div class="canvas-panel-wrapper">
+            <div id="canvas-panel" class="canvas-panel">
+                <div id="rect" width="20px" height="20px" data-tippy-content="Right click to save template"></div>
+            </div>
+        </div>
+        <div class="bottom-bar noselect">
+            <div class="left">
+                <button id="save-aspect-ratio-btn" class="no-borders"
+                    data-tippy-content="Save current ratio as a new preset"><span class="icon-save"></span></button>
+            </div>
+            <div class="right">
+                <div style="margin-right:16px">
+                    <span style="padding-right: 16px;">Aspect ratio</span>
+                    <span id="aspect-ratio-decimal" style="margin-right:8px">0</span>
+                    <span id="aspect-ratio-decimal-copy" class="icon-copy copy-button noselect"
+                        data-tippy-content="Copy"></span>
+                </div>
+                <div>
+                    <span id="aspect-ratio-string" style="margin-right:8px">0:0</span>
+                    <span id="aspect-ratio-string-copy" class="icon-copy copy-button noselect"
+                        data-tippy-content="Copy"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal create new ratio preset -->
+    <div id="add-new-ratio-modal" class="modal">
+        <div class="content" style="margin-top:-90px;">
+            <h2>Add new ratio</h2>
+            <p id="modal-message" class="error"></p>
+            <div class="input-container">
+                <div>
+                    <label for="add-new-title">Title</label>
+                    <input id="add-new-title" type="text" placeholder="1:1">
+                </div>
+                <div>
+                    <label for="">Ratio</label>
+                    <input id="add-new-x" type="text" placeholder="x">
+                    <span class="notation noselect" style="padding: 0 1rem;line-height:30px;">:</span>
+                    <input id="add-new-y" type="text" placeholder="y">
+                </div>
+                <div>
+                    <label for="add-new-height">Default height</label>
+                    <input id="add-new-height" type="text" placeholder="720">
+                </div>
+                <div class="actions">
+                    <button class="button negative">Cancel</button>
+                    <button class="button positive">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Save image as png -->
+    <a id="download-link-image" style="display:none;"></a>
+    <canvas id="gl-canvas" width="640" height="480" style="display:none;"></canvas>
+
+    <!-- Scripts -->
+    <script src="./vendors/toastify/toastify.js"></script>
+    <script src="./app.js"></script>
+    <script src="../node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="../node_modules/tippy.js/dist/tippy.umd.min.js"></script>
+    <script>
+        // Init tippy
+        tippy('[data-tippy-content]', {
+            delay: [1000, 200],
+        })
+    </script>
+</body>
+
+</html>

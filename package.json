@@ -1,0 +1,50 @@
+{
+  "name": "ratio",
+  "version": "1.0.0",
+  "description": "Ratio calculator",
+  "repository": "https://github.com/darkbox/ratio",
+  "main": "main.js",
+  "build": {
+    "appId": "com.rgm.ratio",
+    "productName": "Ratio",
+    "asar": true,
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "dmg": {
+      "icon": false
+    },
+    "linux": {
+      "icon": "./build/icon.icns",
+      "target": [
+        "AppImage",
+        "deb",
+        "snap"
+      ],
+      "category": "Utility"
+    }
+  },
+  "scripts": {
+    "test": "electron .",
+    "postinstall": "electron-builder install-app-deps",
+    "build": "electron-builder --mac --windows --linux",
+    "release": "electron-builder --mac --windows --linux --publish always",
+    "linux": "electron-builder --linux --publish always"
+  },
+  "keywords": [
+    "ratio",
+    "calculator"
+  ],
+  "author": "Rafa G.M. <rgtresd@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^8.2.3",
+    "electron-builder": "^22.6.0"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.4.0",
+    "electron-context-menu": "^2.0.0",
+    "electron-store": "^5.1.1",
+    "tippy.js": "^6.2.3"
+  }
+}

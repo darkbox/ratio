@@ -1,0 +1,366 @@
+:root {
+    --main-bg-color: #f3f5f2;
+    --main-fg-color: #000000;
+    --main-fg-primary-color: #4E4B5C;
+    --main-fg-secondary-color: #9f9fa6;
+    --main-border-color: #d6dbd0;
+    --main-accent-color: #248bfb;
+    --main-accent-transparent: rgba(36, 139, 251, 0.1);
+    --white-color: #fff;
+    --main-danger-color: #ff0000;
+}
+
+:root .dark {
+    --main-bg-color: #0c0d10;
+    --main-fg-color: #fff;
+    --main-fg-primary-color: #b7b7b7;
+    --main-fg-secondary-color: #b7b7b7;
+    --main-border-color: #1d1e23;
+    --main-accent-color: #fd1472;
+    --main-accent-transparent: rgba(36, 139, 251, 0.1);
+    --white-color: #0c0d10;
+    --main-danger-color: #ff0000;
+}
+
+@font-face {
+    font-family: Lato;
+    src: url(../fonts/Lato-Regular.ttf);
+}
+
+
+html, body{
+    color: var(--main-fg-primary-color);
+    background-color: var(--main-bg-color);
+    font-size: 1em/1.75;
+    font-family: Lato;
+    height: 100%;
+    overflow: hidden;
+}
+
+h2{
+    font-weight: bold;
+}
+
+.canvas-panel-wrapper{
+    grid-area: 3 / 1 / 4 / 2;
+    margin: 40px;
+}
+
+.canvas-panel{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+#rect{
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    top: calc(50% - 20px);
+    left: calc(50% - 20px);
+    border: 2px solid var(--main-accent-color);
+    background-color: var(--main-accent-transparent);
+    border-radius: 5px;
+}
+
+.window-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+} 
+
+.side-panel{
+    grid-area: 1 / 1 / 2 / 2;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px 1fr 40px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px; 
+
+    background-color: var(--white-color);
+    border-right: 1px solid var(--main-border-color);
+    padding: 16px;
+    padding-bottom: 0;
+    position: relative;
+}
+
+.side-panel header{
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.side-panel .main-area{
+    grid-area: 2 / 1 / 3 / 2;
+    
+    display: block;
+    height: 100%;
+    position: relative;
+    overflow-y: auto;
+    height: calc(100vh - 86px);
+}
+
+.side-panel .bottom-bar{
+    grid-area: 3 / 1 / 4 / 2;
+
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.ratio-list{
+    color: var(--main-fg-color);
+    font-weight: bold;
+}
+
+.ratio-list > li{
+    margin: 1rem 0;
+}
+
+.ratio-list > li:hover{
+    color: var(--main-accent-color);
+}
+
+.main-area-layout{
+    grid-area: 1 / 2 / 2 / 3;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 40px 140px 1fr 40px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px; 
+}
+
+.main-area-layout .solver-panel{
+    grid-area: 2 / 1 / 4 / 2;
+}
+
+.main-area-layout .top-bar{
+    grid-area: 1 / 1 / 2 / 2;
+
+    display: flex;
+    padding: 0 16px;
+    justify-content: flex-end;
+}
+
+.main-area-layout .bottom-bar{
+    grid-area: 4 / 1 / 5 / 2;
+
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+}
+.bottom-bar .left{
+    display: flex;
+}
+.bottom-bar .right{
+    display: flex;
+    justify-content: right;
+    margin-left: auto;
+}
+
+.h-divider{
+    border-top: 1px solid var(--main-border-color);
+}
+
+.copy-button,
+input,
+button {
+    color: var(--main-fg-primary-color);
+}
+
+.button{
+    color: var(--main-accent-color);
+    background: var(--main-bg-color);
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: 2px solid var(--main-accent-color);
+    border-radius: 5px;
+}
+.button.negative{
+    color: var(--main-danger-color);
+    border-color: var(--main-danger-color);
+}
+.button:hover,
+.button:focus{
+    background: var(--main-accent-color);
+    color: var(--main-bg-color);
+}
+.button.negative:hover,
+.button.negative:focus{
+    background-color: var(--main-danger-color);
+}
+
+.copy-button{
+    transition: opacity 0.3s ease-in-out;
+}
+
+button.no-borders:hover,
+button.no-borders:focus,
+.copy-button:hover{
+    color: var(--main-accent-color);
+}
+
+.input-control{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sub-input-control{
+    position: relative;
+    width: calc(50% - 20px);
+}
+.sub-input-control input{
+    width: calc(100% - 130px);
+}
+
+.sub-input-control.right input{
+    margin-left: 48px
+}
+
+.input-control .copy-button{
+    opacity: 0;
+}
+
+.input-control:hover .copy-button{
+    opacity: 1;
+}
+
+.input-control input{
+    color: var(--main-fg-color);
+    background-color: var(--main-bg-color);
+    text-align: center;
+    font-size: 2rem;
+    padding: 16px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.input-control .notation{
+    text-align: center;
+    font-size: 1.2rem;
+    min-width: 2rem;
+    color: var(--main-fg-primary-color);
+}
+
+button.no-borders{
+    border: none;
+    outline: none;
+    background: none;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Opera and Firefox */
+}
+
+.error{
+    color: var(--main-danger-color);
+    padding-bottom: 1rem;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+.error.show{
+    opacity: 1;
+}
+
+.accent{
+    color: var(--main-accent-color) !important;
+}
+
+.modal{
+    display: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--main-bg-color);
+}
+.modal.show{
+    display: flex;
+}
+.modal .content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    min-width: 200px;
+    padding: 1rem;
+    text-align: center;
+
+}
+
+.modal input{
+    border: 2px solid var(--main-bg-color);
+    border-radius: 5px;
+    outline: none;
+}
+.modal input:focus{
+    border-color: var(--main-accent-color);
+}
+
+.modal .content > h2{
+    font-size: 2rem;
+    padding: 1.5rem;
+}
+
+.modal .content .input-container > div{
+    margin-bottom: 1rem;
+    display: flex;
+}
+
+.modal .content .input-container input[type="text"]{
+    text-align: center;
+    width: 100%;
+}
+.modal .content .input-container label{
+    padding-right: 1rem;
+    line-height: 34px;
+    min-width: 120px;
+    text-align: left;
+}
+
+.modal .content .actions{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+}
+
+
+/* Turn on custom 8px wide scrollbar */
+::-webkit-scrollbar {
+    width: 8px; /* 1px wider than Lion. */
+    /* This is more usable for users trying to click it. */
+    background-color: rgba(0,0,0,0);
+    -webkit-border-radius: 100px;
+  }
+  /* hover effect for both scrollbar area, and scrollbar 'thumb' */
+  ::-webkit-scrollbar:hover {
+    background-color: rgba(0, 0, 0, 0.09);
+  }
+  
+  /* The scrollbar 'thumb' ...that marque oval shape in a scrollbar */
+  ::-webkit-scrollbar-thumb:vertical {
+    /* This is the EXACT color of Mac OS scrollbars. 
+       Yes, I pulled out digital color meter */
+    background: rgba(0,0,0,0.5);
+    -webkit-border-radius: 100px;
+  }
+  ::-webkit-scrollbar-thumb:vertical:active {
+    background: rgba(0,0,0,0.61); /* Some darker color when you click it */
+    -webkit-border-radius: 100px;
+  }

@@ -1,0 +1,115 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?2j6pkz');
+  src:  url('../fonts/icomoon.eot?2j6pkz#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?2j6pkz') format('truetype'),
+    url('../fonts/icomoon.woff?2j6pkz') format('woff'),
+    url('../fonts/icomoon.svg?2j6pkz#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-times-2:before {
+  content: "\e916";
+}
+.icon-times-3:before {
+  content: "\e917";
+}
+.icon-divide-by-3:before {
+  content: "\e918";
+}
+.icon-divide-by-2:before {
+  content: "\e919";
+}
+.icon-activity:before {
+  content: "\e900";
+}
+.icon-check:before {
+  content: "\e901";
+}
+.icon-code:before {
+  content: "\e902";
+}
+.icon-copy:before {
+  content: "\e903";
+}
+.icon-corner-up-left:before {
+  content: "\e904";
+}
+.icon-corner-up-right:before {
+  content: "\e905";
+}
+.icon-cpu:before {
+  content: "\e906";
+}
+.icon-help-circle:before {
+  content: "\e907";
+}
+.icon-info:before {
+  content: "\e908";
+}
+.icon-maximize:before {
+  content: "\e909";
+}
+.icon-minimize:before {
+  content: "\e90a";
+}
+.icon-more-vertical:before {
+  content: "\e90b";
+}
+.icon-percent:before {
+  content: "\e90c";
+}
+.icon-swap:before {
+  content: "\e90d";
+}
+.icon-save:before {
+  content: "\e90e";
+}
+.icon-scissors:before {
+  content: "\e90f";
+}
+.icon-search:before {
+  content: "\e910";
+}
+.icon-settings:before {
+  content: "\e911";
+}
+.icon-sidebar:before {
+  content: "\e912";
+}
+.icon-sliders:before {
+  content: "\e913";
+}
+.icon-trash-2:before {
+  content: "\e91a";
+}
+.icon-unlock:before {
+  content: "\e91b";
+}
+.icon-x:before {
+  content: "\e914";
+}
+.icon-x-circle:before {
+  content: "\e915";
+}
+
+.bigger{
+  font-size: 22px;
+}
