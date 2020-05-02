@@ -29,7 +29,8 @@
     "postinstall": "electron-builder install-app-deps",
     "build": "electron-builder --mac --windows --linux",
     "release": "electron-builder --mac --windows --linux --publish always",
-    "linux": "electron-builder --linux --publish always"
+    "linux": "electron-builder --linux --publish always",
+    "win": "electron-builder --windows --publish always"
   },
   "keywords": [
     "ratio",
