@@ -39,7 +39,7 @@
   "author": "Rafa G.M. <rgtresd@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^8.2.3",
+    "electron": "^8.5.2",
     "electron-builder": "^22.6.0"
   },
   "dependencies": {
